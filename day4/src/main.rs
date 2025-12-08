@@ -52,14 +52,14 @@ struct Grid {
 }
 
 impl Grid {
-    fn new(input: Vec<Vec<bool>>) -> Result<Self, ParseError> {
+    fn new(input: Vec<Vec<bool>>) -> Result<Self, TextError> {
         if input.is_empty() {
-            return Err(ParseError("Empty grid".to_owned()));
+            return Err(TextError("Empty grid".to_owned()));
         }
         let height = input.len();
         let width = input[0].len();
         if !input.iter().all(|v| v.len() == width) {
-            return Err(ParseError("Not all rows are equal length".to_owned()));
+            return Err(TextError("Not all rows are equal length".to_owned()));
         }
         Ok(Grid {
             inner: input,

@@ -10,16 +10,16 @@ pub fn init() {
 }
 
 #[derive(Debug)]
-pub struct ParseError(pub String);
+pub struct TextError(pub String);
 
 
-impl Display for ParseError {
+impl Display for TextError {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f, "Parse error: {}", self.0)
+        write!(f, "Error: {}", self.0)
     }
 }
 
-impl std::error::Error for ParseError {}
+impl std::error::Error for TextError {}
 
 pub trait BoxedError: Error + Send + 'static + Sized {
     fn boxed(self) -> Box<dyn Error + Send + 'static> {
